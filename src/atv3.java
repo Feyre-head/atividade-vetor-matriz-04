@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class atv3 {
     public static void main(String[] args) {
         //Matriz 3x3
+        //mostrar a Matriz no formato tradicional
 
         Scanner sc = new Scanner(System.in);
 
@@ -20,12 +21,11 @@ public class atv3 {
         }
 
         System.out.println("Números Informados");
-        for (int l = 0; l < matriz.length; l++) {
-            for (int c = 0; c < matriz.length; c++) {
-                System.out.print(matriz[l][c] + " ");
-                sc.nextLine();
+        for (int[] linha : matriz) {  //percorre as linhas (arrays)
+            for (int elemento : linha) {  //percorre os elementos de cada linha
+                System.out.print(elemento + " ");
             }
+            System.out.println(); //quebra de linha
         }
-
     }
 }
