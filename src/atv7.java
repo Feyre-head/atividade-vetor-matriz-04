@@ -15,13 +15,16 @@ public class atv7 {
 
         Random r = new Random(6);
 
+        //Preenchendo Matriz e invetendo indice
         for (int l = 0; l < tamanho3; l++) {
             for (int c = 0; c < tamanho2; c++) {
                 matriz[l][c] = r.nextInt(6);
+                matrizTransposta[c][l] = matriz[l][c];
             }
         }
 
-
+        System.out.println("Matriz:");
+        //Mostrando Matriz 3x2
         for (int[] num : matriz) {
             for (int numeros : num) {
                 System.out.print(numeros + "  ");
@@ -29,7 +32,14 @@ public class atv7 {
             System.out.println();
         }
 
-
+        System.out.println("Matriz Transposta:");
+        //Mostrando Matriz Transposta
+        for (int[] num : matrizTransposta) {
+            for (int numeros : num) {
+                System.out.print(numeros + "  ");
+            }
+            System.out.println();
+        }
 
 
     }
