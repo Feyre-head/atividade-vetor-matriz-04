@@ -7,8 +7,11 @@ public class atv8 {
 
         Scanner sc = new Scanner(System.in);
 
+        int jogadas = 0;
         int tamanho = 3;
+
         char[][] tabuleiro = new char[tamanho][tamanho];
+        char jogador = 'X';
 
         //inicializa tabuleiro vazio
         for (int l = 0; l < tamanho; l++) {   //linha
@@ -19,32 +22,55 @@ public class atv8 {
         }
 
 
-        boolean jogoAtivo = true;
-        char jogadorAtual = 'X';
-        int jogadas = 0;
+        System.out.println("=========== Jogo da Velha ===========");
+        System.out.println("== O Primeiro Jogador Inicia com X ==");
+        System.out.println("=====================================");
+        while (jogadas < 9) {
 
 
-        mostrarTabuleiro(tabuleiro);
+            //Jogada usuário
+            mostrarTabuleiro(tabuleiro);
 
-        //Jogada usuário
-        System.out.println("Informe a linha (1-3): ");
-        int linha = sc.nextInt() - 1; //para o indice ficar correto
-        System.out.println("informe a coluna (1-3)");
-        int coluna = sc.nextInt() - 1;
+            System.out.println("Informe a linha (1-3): ");
+            int linha = sc.nextInt() - 1; //para o indice ficar correto
 
-        //validação
-        if (linha < 0 || linha >= tamanho || coluna < 0 || coluna >= tamanho) {
-            System.out.println("Posição inválida, tente novamente!");
+            System.out.println("informe a coluna (1-3)");
+            int coluna = sc.nextInt() - 1;
+
+            //validação
+            if (linha < 0 || linha >= tamanho || coluna < 0 || coluna >= tamanho) {
+                System.out.println("Posição inválida, tente novamente!");
+                continue;
+            }
+            if (tabuleiro[linha][coluna] != ' ') {
+                System.out.println("Posição já ocupada, tente novamente");
+                continue;
+            }
+
+            //jogada
+            tabuleiro[linha][coluna] = jogador;
+            jogadas++;
+
+
+            //troca jogador
+            jogador = (jogador == 'X') ? 'O' : 'X';
+            System.out.println("Vez de Jogar: " + jogador);
+
+
+            // usar 3 ifs
+            //1 para linha
+            //1 para colunas
+            //1 para diagonais
+
+            //ou for para percorrer linhas e colunas
+            //e ifs para diagonais
+
+            //verificar se o espaço não está vazio
         }
-        if (tabuleiro[linha][coluna] != ' ') {
-            System.out.println("Posição já ocupada, tente novamente");
-        }
 
-        //jogada
-        tabuleiro[linha][coluna] = jogadorAtual;
-        jogadas++;
+        System.out.println("Deu Velha! Ninguém Ganhou.");
+        sc.close();
 
-        mostrarTabuleiro(tabuleiro);
 
     }
 
