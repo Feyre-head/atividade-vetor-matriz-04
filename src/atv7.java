@@ -6,20 +6,20 @@ public class atv7 {
         //Transposta de Matriz
         //Criar Matriz [3][2]
         //Criar Matriz [2][3]
-        //inverter [indice
+        //Inverter [indice
 
         int tamanho2 = 2;
         int tamanho3 = 3;
         int[][] matriz = new int[tamanho3][tamanho2];
         int[][] matrizTransposta = new int[tamanho2][tamanho3];
 
-        Random r = new Random(6);
+        Random r = new Random();
 
-        //Preenchendo Matriz e invetendo indice
+        //Preenchendo Matriz e invertendo índice
         for (int l = 0; l < tamanho3; l++) {
             for (int c = 0; c < tamanho2; c++) {
-                matriz[l][c] = r.nextInt(6);
-                matrizTransposta[c][l] = matriz[l][c];
+                matriz[l][c] = r.nextInt(6);      //Ads número Random na Matriz
+                matrizTransposta[c][l] = matriz[l][c];  //Inverte
             }
         }
 
@@ -40,7 +40,6 @@ public class atv7 {
             }
             System.out.println();
         }
-
 
     }
 }
