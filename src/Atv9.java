@@ -27,18 +27,19 @@ public class Atv9 {
 
             for (int c = 0; c < coluna; c++) {  //coluna
                 System.out.println("Informe a " + (1 + c) + " nota:");
-                notas[a][c] = sc.nextInt();
+                notas[a][c] = sc.nextDouble();
             }
 
             System.out.println();
         }
 
         for (int a = 0; a < aluno.length; a++) {
-            System.out.println("Aluno:" + aluno[a]);
+            System.out.println("Aluno: " + aluno[a]);
             System.out.println("Primeira Nota: " + notas[a][0]);
             System.out.println("Segunda nota: " + notas[a][1]);
+            System.out.println("===================");
+            System.out.println("Média: " + media(notas[a][0], notas[a][1]));
         }
-
 
     }
 
