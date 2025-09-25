@@ -18,31 +18,37 @@ public class Atv10 {
 //        X → navio acertado
 
         //Inicializa tabuleiro com Água
-        for (char[] num : tabuleiro) {
-            for (char tab : num) {
-                tab = '~';
-                System.out.print(tab + "  ");
+        for (int l = 0; l < tamanho; l++) {
+            for (int c = 0; c < tamanho; c++) {
+                tabuleiro[l][c] = '~';
             }
-            System.out.println();
         }
+
+        exibirTabuleiro(tabuleiro);
 
         //Sorteio de 3 navios em posição aleatorias
         int totalNavios = 3;
         int colocados = 0;
-        while (colocados < totalNavios){
+        while (colocados < totalNavios) {
             int linha = r.nextInt(tamanho);
             int coluna = r.nextInt(tamanho);
-            if(mar[linha][coluna] == 0){
+            if (mar[linha][coluna] == 0) {
                 mar[linha][coluna] = 1; //coloca navio
                 colocados++;
             }
         }
 
+//        exibirTabuleiroBomba(mar);
+
         System.out.println("======== Batalha Naval ========");
         System.out.println("Encontre os 3 navios escondidos");
+        System.out.println("""               
+                0 = Tiro na Água
+                X = Bomba
+                """);
 
         int acertos = 0;
-        while(acertos < totalNavios){
+        while (acertos < totalNavios) {
             System.out.println("Informe a linha (0-6)");
             int linha = sc.nextInt();
 
@@ -50,14 +56,15 @@ public class Atv10 {
             int coluna = sc.nextInt();
 
             //Verifica se é válido a posição
-            if (linha < 0 || linha >= tamanho || coluna < 0 || coluna >= tamanho){
+            if (linha < 0 || linha >= tamanho || coluna < 0 || coluna >= tamanho) {
                 System.out.println("Posição Inválida, tente novamente!");
                 continue;
             }
 
+            System.out.println("=========================");
             //0 = água, 1 = navio, -1 = navio acertado, 2 = tiro na água
-            if (mar[linha][coluna] == 1){
-                System.out.println("Acertou um Navio!");
+            if (mar[linha][coluna] == 1) {
+                System.out.println("\uD83D\uDCA5 Acertou um Navio!");
                 mar[linha][coluna] = -1;
                 tabuleiro[linha][coluna] = 'X';
                 acertos++;
@@ -66,21 +73,42 @@ public class Atv10 {
 
             } else if (mar[linha][coluna] == 2) {
                 System.out.println("Você já tentou aqui e foi água!");
-            }else {
-                System.out.println("Água");
+            } else {
+                System.out.println("\uD83C\uDF0A Água!");
                 mar[linha][coluna] = 2;
                 tabuleiro[linha][coluna] = 'O';
 
             }
             System.out.println("Navios restantes:" + (totalNavios - acertos));
+
+            System.out.println("======================");
             exibirTabuleiro(tabuleiro);
+            System.out.println("======================");
         }
         sc.close();
 
     }
 
-    public static void exibirTabuleiro(char[][] tabuleiro){
-
+    public static void exibirTabuleiro(char[][] tabuleiro) {
+        System.out.println("   0  1  2  3  4  5  6 ");
+        for (int l = 0; l < tabuleiro.length; l++) {
+            System.out.print(l + "  ");
+            for (int c = 0; c < tabuleiro.length; c++) {
+                System.out.print(tabuleiro[l][c] + "  ");
+            }
+            System.out.println();
+        }
     }
 
+
+//    public static void exibirTabuleiroBomba(int[][] mar) {
+//        System.out.println("   0  1  2  3  4  5  6 ");
+//        for (int l = 0; l < mar.length; l++) {
+//            System.out.print(l + "  ");
+//            for (int c = 0; c < mar.length; c++) {
+//                System.out.print(mar[l][c] + "  ");
+//            }
+//            System.out.println();
+//        }
+//    }
 }
